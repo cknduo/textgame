@@ -1,0 +1,31 @@
+.journal {
+    text-align: left;
+    color: white;
+    text-shadow: 2px 2px 10px black;
+    margin: 1em 3em 3em 3em;
+    /* padding: 2em 2em 2em 2em */
+}
+
+.options {
+    text-align: center;
+    padding-top: 2em;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 0.35em 1.2em;
+    background-color: rgba(23, 23, 23, 0.6);
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    border-radius: 10px;
+    color: inherit;
+    outline: none
+}
+
+button.scene-option:hover {
+    background-color: rgba(0, 107, 50, 0.8);
+    outline: none;
+    cursor: pointer
+}

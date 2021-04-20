@@ -1,0 +1,41 @@
+.player {
+    text-align: center;
+    text-shadow: 2px 2px 10px black;
+    margin: 1em 1em 0em 1em;
+}
+
+.player-control {
+    color: #FF8B64;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.player-option-2 {
+    grid-column: 3 / 4
+}
+
+.playing-as {
+    color: white;
+    margin-top: 2em
+}
+
+button.player-option:hover {
+    background-color: rgba(255, 255, 255);
+    outline: none;
+    cursor: pointer
+}
+
+button.close-modal {
+    width: auto;
+    margin-top: 1em;
+    padding: 0.2em 0.4em;
+    background-color: #FF8B64;
+    font-size: 0.7em;
+}
+
+button.close-modal:hover {
+    background-color: rgba(0, 107, 50, 0.8);
+    outline: none;
+    cursor: pointer
+}
+
