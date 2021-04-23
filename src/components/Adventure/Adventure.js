@@ -1,5 +1,5 @@
 import React from 'react'
-import './Journal.css'
+import './Adventure.css'
 
 const Journal = (props) => {
     return (
@@ -8,11 +8,11 @@ const Journal = (props) => {
                 {props.sceneDescription}
             </div>
             <div className='options'>
-                <button className='scene-option' onClick={() => props.onOptionClick(props.firstOptionName)}>
+                <button className='scene-option' onClick={() => props.onSceneChange(props.firstOptionName)}>
                     {props.firstOptionDescription}
                 </button>
                 <br />
-                <button className='scene-option' onClick={() => props.onOptionClick(props.secondOptionName)}>
+                <button className='scene-option' onClick={() => props.onSceneChange(props.secondOptionName)}>
                     {props.secondOptionDescription}
                 </button>
             </div>

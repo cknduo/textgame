@@ -12,7 +12,7 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         transform: 'translate(-50%, -50%)',
-        padding: '1rem'
+        padding: '1.5rem'
     }
 }
 
@@ -25,28 +25,21 @@ class Player extends Component {
             name: '',
             showModal: ''
         }
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.openModal = this.openModal.bind(this)
-        this.closeModal = this.closeModal.bind(this)
-        this.handleSaveProgress = this.handleSaveProgress.bind(this)
     }
 
-    openModal() {
-      this.setState({showModal: true});
+    openModal = () => {
+      this.setState({showModal: true})
     }
   
-    closeModal() {
-      this.setState({showModal: false});
+    closeModal = () => {
+      this.setState({showModal: false})
     }
 
-    handleChange(event) {
-        this.setState({
-            name: event.target.value
-        })
+    handlePlayerChange = (event) => {
+        this.setState({name: event.target.value})
     }
 
-    handleSubmit(event) {
+    handlePlayerSubmit = (event) => {
         event.preventDefault()
         let user = {
             "name": this.state.name
@@ -62,11 +55,12 @@ class Player extends Component {
         .then(data => console.log(data))
     }
 
-    handleSaveProgress(event) {
+    handleSaveProgress = () => {
         let user = {
-            "name": this.state.name,
-            "progress": this.props.currentScene
+            name: this.state.name,
+            progress: this.props.currentScene
         }
+        console.log(user)
         fetch('http://localhost:3000/user/update', {
             method: 'POST',
             body: JSON.stringify(user),
@@ -83,22 +77,23 @@ class Player extends Component {
             <div className='player'>
                 <div className='player-control'>
                     <button className='player-option player-option-1' onClick={this.openModal}>Enter Player</button>
-
                     <Modal
                         isOpen={this.state.showModal}
                         onRequestClose={this.closeModal}
                         style={customStyles}
                     >
                     <div>
-                        <form onSubmit={this.handleSubmit}>
-                            <label>Enter your name:
-                                <br />
-                                <input type='text' placeholder='Name' onChange={this.handleChange}/>
+                        <form onSubmit={this.handlePlayerSubmit}>
+                            <label>
+                                <input className='text-input' type='text' placeholder='Name' onChange={this.handlePlayerChange}/>
                             </label>
-                            <input type='submit' value='Save' />
+                            <input className='modal-btn' type='submit' value='Save Player' />
                         </form>
                     </div>
-                    <button className='close-modal' onClick={this.closeModal}>CLOSE</button>    
+                    <div>
+                        <button className='modal-btn' onClick={() => this.props.onSkipProgress(this.state.name)}>Skip to last saved progress</button>
+                        <button className='modal-btn' onClick={this.closeModal}>CLOSE</button>    
+                    </div>
                     </Modal>
                     
                     <button className='player-option player-option-2' onClick={this.handleSaveProgress}>Save current progress</button>

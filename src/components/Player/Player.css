@@ -25,7 +25,7 @@ button.player-option:hover {
     cursor: pointer
 }
 
-button.close-modal {
+button.modal-btn {
     width: auto;
     margin-top: 1em;
     padding: 0.2em 0.4em;
@@ -33,9 +33,39 @@ button.close-modal {
     font-size: 0.7em;
 }
 
-button.close-modal:hover {
+button.modal-btn:hover {
     background-color: rgba(0, 107, 50, 0.8);
     outline: none;
     cursor: pointer
 }
 
+input.modal-btn {
+    width: auto;
+    padding: 0.2em 0.4em;
+    background-color: #FF8B64;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    font-family: inherit;
+    font-size: 0.7em;
+    border: none;
+    color: inherit;
+    outline: none
+}
+
+input.modal-btn:hover {
+    background-color: rgba(0, 107, 50, 0.8);
+    outline: none;
+    cursor: pointer
+}
+
+.text-input {
+    padding: 0.2em 0.4em;
+    border: 0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    outline: none;
+    font-family: inherit;
+    font-size: 0.7em;
+}
+
+.progress-close-btns {
+    text-align: center;
+}

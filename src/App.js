@@ -1,8 +1,7 @@
-// import logo from './logo.svg';
 import React, {Component} from 'react'
 import './App.css'
 import Player from './components/Player/Player'
-import Journal from './components/Journal/Journal'
+import Adventure from './components/Adventure/Adventure'
 import Particles from 'react-particles-js'
 
 const particlesparam = {
@@ -56,15 +55,15 @@ class App extends Component {
     this.state = initState
   }
 
-  async componentDidMount() {
+  componentDidMount = async () => {
     const url = `http://localhost:3000/scene/${this.state.sceneChange}`
     const res = await fetch(url)
     const data = await res.json()
     this.setState({scene: data})
   }
 
-  async onOptionClick(option) {
-    this.setState({ sceneChange: option }, async () => {
+  onSceneChange = async (option) => {
+    this.setState({sceneChange: option}, async () => {
       const url = `http://localhost:3000/scene/${this.state.sceneChange}`
       const res = await fetch(url)
       const data = await res.json()
@@ -72,18 +71,28 @@ class App extends Component {
     })
   }
 
+  onSkipProgress = async (playerName) => {
+    const url = `http://localhost:3000/user/${playerName}`
+    const res = await fetch(url)
+    const data = await res.json()
+    this.onSceneChange(data.progress)
+  }
+
   render() {
     return (
       <div className='App'>
         <Particles className='particles' params={particlesparam} />
-        <Player currentScene={this.state.sceneChange} />
-        <Journal 
+        <Player 
+          currentScene={this.state.sceneChange}
+          onSkipProgress={this.onSkipProgress}
+        />
+        <Adventure 
           sceneDescription={this.state.scene.description}
           firstOptionDescription={this.state.scene.options[0].description}
           firstOptionName={this.state.scene.options[0].optionName}
           secondOptionDescription={this.state.scene.options[1].description}
           secondOptionName={this.state.scene.options[1].optionName}
-          onOptionClick={this.onOptionClick.bind(this)}
+          onSceneChange={this.onSceneChange}
         />
       </div>
     )
