@@ -91,8 +91,7 @@ class Player extends Component {
                         </form>
                     </div>
                     <div>
-                        <button className='modal-btn' onClick={() => this.props.onSkipProgress(this.state.name)}>Skip to last saved progress</button>
-                        <button className='modal-btn' onClick={this.closeModal}>CLOSE</button>    
+                        <button className='modal-btn' onClick={() => this.props.onSkipProgress(this.state.name)}>Skip to last saved progress</button>    
                     </div>
                     </Modal>
                     
